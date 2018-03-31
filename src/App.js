@@ -17,25 +17,25 @@ class App extends Component {
     async componentDidMount(){
         $(document).ready(function(){ $('.modal').modal() })
         let books = await fetch('books.json')
-        this.setState({...this.state, loading: false, books: await books.json()})
+        this.setState({ loading: false, books: await books.json() })
     }
 
     addBook() {
-        this.setState({ ...this.state, formBook: {}, editIndex: null }, window.M.updateTextFields)
+        this.setState({ formBook: {}, editIndex: null }, window.M.updateTextFields)
     }
 
     editBook(index) {
-        this.setState({...this.state, formBook: this.state.books[index], editIndex: index}, window.M.updateTextFields)
+        this.setState({ formBook: this.state.books[index], editIndex: index }, window.M.updateTextFields)
     }
 
     deleteBook(index){ 
         if(window.confirm('Are you sure?')){
-            this.setState({books: this.state.books.filter((book, i) => index !== i)})
+            this.setState({ books: this.state.books.filter((book, i) => index !== i) })
         }
     }
 
     handleChange(event) {
-        this.setState({ ...this.state, formBook: { ...this.state.formBook, [event.target.name]: event.target.value }})
+        this.setState({ formBook: { ...this.state.formBook, [event.target.name]: event.target.value }})
     }
 
     handleSubmit(event) {
@@ -56,9 +56,9 @@ class App extends Component {
             return window.M.toast({html: 'Title Exists', displayLength: 1000})
 
         if(this.state.editIndex == null) 
-            this.setState({ ...this.state, books: this.state.books.concat([this.state.formBook])})
+            this.setState({ books: this.state.books.concat([this.state.formBook]) })
         else 
-            this.setState({...this.state, books: this.state.books.map((book, index) => {
+            this.setState({ books: this.state.books.map((book, index) => {
                 return index === this.state.editIndex ? this.state.formBook : book
             })})
 
