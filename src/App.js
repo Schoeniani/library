@@ -16,7 +16,7 @@ class App extends Component {
 
     async componentDidMount(){
         $(document).ready(function(){ $('.modal').modal() })
-        let books = await fetch('/books.json')
+        let books = await fetch('books.json')
         this.setState({...this.state, loading: false, books: await books.json()})
     }
 
@@ -75,7 +75,8 @@ class App extends Component {
                     <td>{book.pages}</td>
                     <td>{book.year}</td>
                     <td>
-                        <a className="pointer-cursor modal-trigger black-text" onClick={this.editBook.bind(this, index)} href="#bookModal">
+                        <a className="pointer-cursor modal-trigger black-text" 
+                            onClick={this.editBook.bind(this, index)} href="#bookModal">
                             <i className="material-icons">create</i>
                         </a>
                         <span className="pointer-cursor" onClick={this.deleteBook.bind(this, index)}>
@@ -95,7 +96,8 @@ class App extends Component {
                 <div className={'container' + (this.state.loading ? ' hidden' : '')}>
                     <h3>Library</h3>
                     <div>
-                        <a className="waves-effect waves-light btn-small red lighten-2 modal-trigger" onClick={this.addBook.bind(this)} href="#bookModal">
+                        <a className="waves-effect waves-light btn-small red lighten-2 modal-trigger" 
+                            onClick={this.addBook.bind(this)} href="#bookModal">
                             <i className="material-icons left">add</i>Add Book
                         </a>
                     </div>
@@ -120,23 +122,23 @@ class App extends Component {
                             <div className="modal-content">
                                 <h5>{this.state.editIndex != null ? 'Edit' : 'Add'} Book</h5>
                                 <div className="input-field">
-                                    <input id="title" name="title" type="text" value={formBook.title || ''} onChange={this.handleChange} />
+                                    <input name="title" type="text" value={formBook.title || ''} onChange={this.handleChange} />
                                     <label>Title</label>
                                 </div>
                                 <div className="input-field">
-                                    <input id="author" name="author" type="text" value={formBook.author || ''} onChange={this.handleChange} />
+                                    <input name="author" type="text" value={formBook.author || ''} onChange={this.handleChange} />
                                     <label>Author</label>
                                 </div>
                                 <div className="input-field">
-                                    <input id="language" name="language" type="text" value={formBook.language || ''} onChange={this.handleChange} />
+                                    <input name="language" type="text" value={formBook.language || ''} onChange={this.handleChange} />
                                     <label>Language</label>
                                 </div>
                                 <div className="input-field">
-                                    <input id="pages" name="pages" type="text" value={formBook.pages || ''} onChange={this.handleChange} />
+                                    <input name="pages" type="text" value={formBook.pages || ''} onChange={this.handleChange} />
                                     <label>Pages</label>
                                 </div>
                                  <div className="input-field">
-                                    <input id="year" name="year" type="text" value={formBook.year || ''} onChange={this.handleChange} />
+                                    <input name="year" type="text" value={formBook.year || ''} onChange={this.handleChange} />
                                     <label>Year</label>
                                 </div>
                             </div>
