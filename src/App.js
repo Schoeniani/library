@@ -40,26 +40,27 @@ class App extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        if(!this.state.formBook.title) 
+        let formBook = this.state.formBook
+
+        if(!formBook.title) 
             return window.M.toast({html: 'Invalid Title', displayLength: 1000})
-        if(!this.state.formBook.author) 
+        if(!formBook.author) 
             return window.M.toast({html: 'Invalid Author', displayLength: 1000})
-        if(!this.state.formBook.language) 
+        if(!formBook.language) 
             return window.M.toast({html: 'Invalid Language', displayLength: 1000})
-        if(!this.state.formBook.pages || isNaN(this.state.formBook.pages) || this.state.formBook.pages <= 0) 
+        if(!formBook.pages || isNaN(formBook.pages) || formBook.pages <= 0) 
             return window.M.toast({html: 'Invalid Pages', displayLength: 1000})
-        if(!this.state.formBook.year || isNaN(this.state.formBook.year) || 
-            this.state.formBook.year <= 0 || this.state.formBook.year > 2018) 
+        if(!formBook.year || isNaN(formBook.year) || formBook.year <= 0 || formBook.year > 2018) 
             return window.M.toast({html: 'Invalid Year', displayLength: 1000})
         if(this.state.books.filter((book, index) => index !== this.state.editIndex).find(book => 
-            book.title === this.state.formBook.title || normalize(book.title) === normalize(this.state.formBook.title)))
+            book.title === formBook.title || normalize(book.title) === normalize(formBook.title)))
             return window.M.toast({html: 'Title Exists', displayLength: 1000})
 
         if(this.state.editIndex == null) 
-            this.setState({ books: this.state.books.concat([this.state.formBook]) })
+            this.setState({ books: this.state.books.concat([formBook]) })
         else 
             this.setState({ books: this.state.books.map((book, index) => {
-                return index === this.state.editIndex ? this.state.formBook : book
+                return index === this.state.editIndex ? formBook : book
             })})
 
         $('.modal').modal('close')
