@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+.App {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.pointer-cursor {
+    cursor: pointer;
+}
