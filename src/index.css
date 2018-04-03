@@ -9,10 +9,6 @@ body {
     margin-bottom: 50px;
 }
 
-.hidden {
-    visibility: hidden;
-}
-
-.pointer-cursor {
+.cursor-pointer {
     cursor: pointer;
 }
